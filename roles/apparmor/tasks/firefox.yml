@@ -1,0 +1,14 @@
+---
+
+- name: check if firefox profile is disabled
+  command: ls /etc/apparmor.d/disable/usr.bin.firefox
+  ignore_errors: true
+  register: firefox_disabled
+
+- debug: msg="{{ firefox_disabled.rc }}"
+
+- name: enable apparmor profile for firefox
+  command: aa-enforce /etc/apparmor.d/usr.bin.firefox
+  # only run this when the disabled link is actually there, if it's not there
+  # then apparmor for firefox is enabled
+  when: firefox_disabled.rc == 0

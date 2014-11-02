@@ -1,0 +1,11 @@
+---
+
+- name: install required packages
+  apt: name={{ item }} state=installed
+  with_items: packages
+
+- name: ensure apparmor is enabled
+  command: aa-status
+  changed_when: false
+
+- include: firefox.yml

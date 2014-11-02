@@ -5,3 +5,5 @@
   roles:
     - kvm
     - docker
+    - programming-languages
+    - apparmor
