@@ -4,6 +4,7 @@
   command: ls /etc/apparmor.d/disable/usr.bin.firefox
   ignore_errors: true
   register: firefox_disabled
+  changed_when: True
 
 - debug: msg="{{ firefox_disabled.rc }}"
 

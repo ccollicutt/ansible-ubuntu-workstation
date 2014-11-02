@@ -1,0 +1,7 @@
+---
+
+- name: enable ufw
+  ufw: state=enabled logging=on
+
+- name: enable inbound ssh
+  ufw: rule=allow name=OpenSSH 
