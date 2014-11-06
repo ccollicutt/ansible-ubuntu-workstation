@@ -7,7 +7,9 @@
   changed_when: False
 
 - name: download vagrant
-  get_url: url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb dest=/var/tmp/vagrant.deb
+  get_url: >
+    url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb
+    dest=/var/tmp/vagrant.deb
   when: vagrant_installed.rc != 0
 
 - name: install vagrant
@@ -15,4 +17,6 @@
   when: vagrant_installed.rc != 0
 
 - name: ensure /var/tmp/vagrant.deb does not exist
-  file: path=/var/tmp/vagrant.deb state=absent
+  file: >
+    path=/var/tmp/vagrant.deb
+    state=absent

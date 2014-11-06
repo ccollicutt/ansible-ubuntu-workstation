@@ -3,6 +3,7 @@
 - hosts: localhost
   connection: local
   roles:
+    - window-managers
     - kvm
     - docker
     - programming-languages
