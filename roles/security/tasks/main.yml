@@ -1,5 +1,10 @@
 ---
 
+# FIXME: Ugly, must be a better way...might require a script
+- name: check if using encrypted drives
+  shell: blkid | grep crypto_LUKS
+  changed_when: False
+
 # FIXME: Think this will require a reboot
 - name: ensure guest session for lightdm is disabled
   lineinfile: >
