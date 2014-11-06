@@ -6,3 +6,14 @@
 
 - name: ensure docker is running
   service: name=docker state=running
+
+- name: add sudo user to docker group
+  user: name={{ ansible_env.SUDO_USER }} groups=docker
+  register: docker_group
+
+- name: restart docker
+  service: name=docker state=restarted
+  when: docker_group.changed
+
+- debug: msg="You will have to relogin to get access to docker without sudo"
+  when: docker_group.changed
