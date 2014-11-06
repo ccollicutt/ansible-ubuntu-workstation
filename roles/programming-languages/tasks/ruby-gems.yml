@@ -1,11 +1,5 @@
 ---
 
-- name: ensure ruby 2.1 is installed
-  apt: name=ruby2.1 state=installed
-
-- name: ensure ruby2.1-dev is installed
-  apt: name=ruby2.1-dev state=installed
-
 - name: install required libraries for building ruby gems
   apt: name={{ item }} state=installed
   with_items:
