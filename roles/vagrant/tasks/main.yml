@@ -1,0 +1,14 @@
+---
+
+- name: check if vagrant is installed
+  shell: which vagrant
+  ignore_errors: True
+  register: vagrant_installed
+
+- name: download vagrant
+  get_url: url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb dest=/var/tmp/vagrant.deb
+  when: vagrant_installed.rc != 0
+
+- name: install vagrant
+  shell: dpkg -i /var/tmp/vagrant.deb
+  when: vagrant_installed.rc != 0

@@ -1,0 +1,8 @@
+---
+
+# FIXME: Think this will require a reboot
+- name: ensure guest session for lightdm is disabled
+  lineinfile: >
+    dest=/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+    line="allow-guest=false"
+  notify: reboot

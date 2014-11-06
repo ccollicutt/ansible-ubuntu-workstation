@@ -9,5 +9,6 @@
     - apparmor
     - ufw
     - text-editors
-    - ruby
     - jekyll
+    - vagrant
+    - security

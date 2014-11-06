@@ -12,3 +12,9 @@ Hopefully at some point it will be setting up a lot of security related configur
 curtis@kane:~$ sudo apt-get install python-pip -y
 curtis@kane:~$ sudo pip install ansible
 ```
+
+## 2. Run playbook
+
+```bash
+curtis@kane:~$ ansible-playbook site.yml
+```
