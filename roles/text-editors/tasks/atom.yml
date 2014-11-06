@@ -1,0 +1,11 @@
+---
+
+- name: see if atom deb file is already installed
+  command: dpkg -l atom
+  register: atom_installed
+  ignore_errors: True
+  changed_when: False
+
+- name: download the atom deb file
+  get_url: url=https://github.com/atom/atom/releases/download/v0.142.0/atom-amd64.deb dest=/var/tmp/atom.deb
+  when: atom_installed.rc != 0

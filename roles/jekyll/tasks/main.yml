@@ -1,0 +1,4 @@
+---
+
+- name: ensure jekyll is installed
+  gem: name=jekyll state=present

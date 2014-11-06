@@ -1,0 +1,26 @@
+---
+
+- name: ensure ruby 2.1 is installed
+  apt: name=ruby2.1 state=installed
+
+- name: ensure ruby2.1-dev is installed
+  apt: name=ruby2.1-dev state=installed
+
+- name: install required libraries for building ruby gems
+  apt: name={{ item }} state=installed
+  with_items:
+    - libpq-dev
+    - libmysqlclient-dev
+
+# FIXME: blargh
+- name: remove ruby-jekyll-sass-converter
+  command: dpkg --purge --force-all ruby-jekyll-sass-converter
+  changed_when: True
+
+- name: install jekyll-sass-converter gem
+  gem: name=jekyll-sass-converter
+
+- name: update gems
+  command: gem update
+  register: gem_updated
+  changed_when: "'Nothing to update' not in gem_updated.stdout"
