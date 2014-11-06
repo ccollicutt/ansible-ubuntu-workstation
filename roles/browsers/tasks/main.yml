@@ -1,7 +1,5 @@
 ---
 
-- name: install required packages
+- name: ensure required packages are installed
   apt: name={{ item }} state=installed
   with_items: packages
-
-- include: i3.yml

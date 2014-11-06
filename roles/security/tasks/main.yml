@@ -10,4 +10,3 @@
   lineinfile: >
     dest=/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
     line="allow-guest=false"
-  notify: reboot
