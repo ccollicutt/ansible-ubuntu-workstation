@@ -2,7 +2,7 @@
 
 - name: check if firefox profile is disabled
   command: ls /etc/apparmor.d/disable/usr.bin.firefox
-  ignore_errors: true
+  ignore_errors: True
   register: firefox_disabled
   changed_when: True
 

@@ -3,5 +3,6 @@
 packages:
   - qemu-kvm
   - libvirt-bin
+  - libvirt-dev
   - ubuntu-vm-builder
   - bridge-utils

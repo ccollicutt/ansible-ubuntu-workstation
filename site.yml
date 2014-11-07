@@ -1,7 +1,12 @@
 ---
 
+#
+# Things that need to be run as root
+#
+
 - hosts: localhost
   connection: local
+  sudo: True
   roles:
     - browsers
     - window-managers
@@ -14,3 +19,13 @@
     - jekyll
     - vagrant
     - security
+
+#
+# Things that should be run as the user
+#
+
+- hosts: localhost
+  connection: local
+  sudo: False
+  roles:
+    - vagrant-plugins

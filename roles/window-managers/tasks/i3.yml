@@ -10,3 +10,5 @@
     src=i3-config
     dest=/home/{{ ansible_env.SUDO_USER }}/.i3/config
     mode=0644
+    owner={{ ansible_env.SUDO_USER }}
+    group={{ ansible_env.SUDO_USER }}

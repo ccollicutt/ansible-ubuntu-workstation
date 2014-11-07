@@ -4,4 +4,4 @@
   apt: name={{ item }} state=installed
   with_items: packages
 
-#- include: ruby-gems.yml
+- include: ruby-gems.yml

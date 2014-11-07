@@ -1,0 +1,15 @@
+---
+
+- name: check if vagrant-libvirt plugin is installed
+  shell: vagrant plugin list | grep vagrant-libvirt
+  register: vagrant_libvirt_plugin
+  ignore_errors: True
+  changed_when: False
+
+- debug: msg={{ vagrant_libvirt_plugin.rc }}
+
+- debug: msg={{ ansible_user_id }}
+
+- name: install vagrant-libvirt plugin
+  shell: vagrant plugin install vagrant-libvirt
+  when: vagrant_libvirt_plugin.rc != 0

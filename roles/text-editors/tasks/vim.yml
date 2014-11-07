@@ -2,4 +2,11 @@
 
 - name: ensure vim is installed
   apt: name=vim state=installed
-  
+
+- name: install vimrc configuration file
+  copy: >
+    src=vimrc
+    dest=/home/{{ ansible_env.SUDO_USER }}/.vimrc
+    mode=0644
+    owner={{ ansible_env.SUDO_USER }}
+    group={{ ansible_env.SUDO_USER }}
