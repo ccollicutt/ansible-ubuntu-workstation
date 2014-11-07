@@ -7,8 +7,9 @@
 - name: ensure docker is running
   service: name=docker state=running
 
+# FIXME: should add to groups?
 - name: add sudo user to docker group
-  user: name={{ ansible_env.SUDO_USER }} groups=docker
+  user: name={{ ansible_env.SUDO_USER }} groups=docker,adm,cdrom,sudo,dip,plugdev,lpadmin,sambashare,libvirtd
   register: docker_group
 
 - name: restart docker
