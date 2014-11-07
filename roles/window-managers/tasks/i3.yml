@@ -3,7 +3,7 @@
 - name: ensure ~/.i3 directory exists
   file: >
     path=/home/{{ ansible_env.SUDO_USER }}/.i3
-    mode=0644
+    mode=0755
 
 - name: install i3 config file
   copy: >
