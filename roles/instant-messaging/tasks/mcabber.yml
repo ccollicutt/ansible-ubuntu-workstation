@@ -1,0 +1,30 @@
+---
+
+- name: install mcabber
+  apt: >
+    name=mcabber
+    state=installed
+
+- name: ensure ~/.mcabber/logs exists
+  file: >
+    path=/home/{{ ansible_env.SUDO_USER }}/.mcabber
+    owner={{ ansible_env.SUDO_USER }}
+    group={{ ansible_env.SUDO_USER }}
+    state=directory
+    recurse=yes
+
+- name: install mcabber configuration file
+  template: >
+    src=mcabberrc.j2
+    dest=/home/{{ ansible_env.SUDO_USER }}/.mcabber/mcabberrc
+    owner={{ ansible_env.SUDO_USER }}
+    group={{ ansible_env.SUDO_USER }}
+    mode=0640
+
+- name: install mcabber notify file
+  copy: >
+    src=notify
+    dest=/home/{{ ansible_env.SUDO_USER }}/.mcabber/notify
+    owner={{ ansible_env.SUDO_USER }}
+    group={{ ansible_env.SUDO_USER }}
+    mode=0755
