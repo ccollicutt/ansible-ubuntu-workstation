@@ -1,0 +1,16 @@
+#!/bin/bash
+EVENT_TYPE=$1
+EVENT_SUBTYPE=$2
+JID=$3
+FILE=$4
+TITLE="mcabber"
+TIMEOUT=10000
+ 
+function new_message_in() {
+    notify-send -t $TIMEOUT "$TITLE" "New message from ${JID}."
+}
+ 
+if [ $EVENT_TYPE == "MSG" ] && [ $EVENT_SUBTYPE == "IN" ]
+then
+    new_message_in
+fi 
