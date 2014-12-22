@@ -20,13 +20,3 @@
   file: >
     path=/var/tmp/vagrant.deb
     state=absent
-
-- name: check if vagrant-libvirt plugin is installed
-  shell: vagrant plugin list | grep vagrant-libvirt
-  register: vagrant_libvirt_plugin
-  ignore_errors: True
-  changed_when: False
-
-- name: install vagrant-libvirt plugin
-  shell: vagrant plugin install vagrant-libvirt
-  when: vagrant_libvirt_plugin.rc != 0

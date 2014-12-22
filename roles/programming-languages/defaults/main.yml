@@ -1,4 +1,11 @@
 packages:
  - golang
  - ruby2.1
- - ruby2.1-dev 
+ - ruby2.1-dev
+
+ruby_gem_build_packages:
+  - libpq-dev
+  - libmysqlclient-dev
+
+ruby_gems:
+  - ruby-libvirt
