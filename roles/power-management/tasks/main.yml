@@ -1,0 +1,7 @@
+---
+
+- name: install various power management utilities
+  apt: >
+    name={{ item }}
+    state=installed
+  with_items: packages

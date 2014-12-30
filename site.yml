@@ -13,12 +13,18 @@
     - kvm
     - docker
     - programming-languages
+    - instant-messaging
     - apparmor
     - ufw
     - text-editors
     - jekyll
     - vagrant
+    - virtualbox
+    - spideroak
+    - ssh
     - security
+    - openstack-clients
+    - power-management
 
 #
 # Things that should be run as the user

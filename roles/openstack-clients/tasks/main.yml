@@ -1,0 +1,25 @@
+---
+
+- name: ensure we have a good build environement for pip packages
+  apt: >
+    name={{ item }}
+    state=present
+  with_items:
+    - python-dev
+
+- name: install required packages for nova clients
+  apt: >
+    name={{ item }}
+    state=present
+  with_items:
+    - python-netifaces
+
+- name: install openstack clients
+  pip: >
+    name={{ item }}
+    state=present
+  with_items:
+    - python-keystoneclient
+    - python-novaclient
+    - python-ceilometerclient
+    - python-glanceclient

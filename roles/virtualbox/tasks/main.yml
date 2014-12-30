@@ -1,0 +1,17 @@
+---
+
+- name: add virtualbox repo
+  apt_repository: >
+    repo='deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib'
+    state=present
+
+- name: add virtualBox repo signing key
+  apt_key: >
+    state=present
+    url=http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc
+
+- name: install virtualbox
+  apt: >
+    name={{ item }}
+    state=present
+  with_items: packages

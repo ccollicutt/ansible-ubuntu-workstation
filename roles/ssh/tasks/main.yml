@@ -1,0 +1,22 @@
+---
+
+- name: ensure openssh-server is installed
+  apt: >
+    name=openssh-server
+    state=installed
+
+- name: copy over sshd_config
+  file: >
+    src=sshd_config
+    dest=/etc/ssh/sshd_config
+    owner=root
+    group=root
+    mode=0644
+  notify:
+    - reload ssh
+
+
+- name: ensure ssh server is running
+  service: >
+    name=ssh
+    state=running

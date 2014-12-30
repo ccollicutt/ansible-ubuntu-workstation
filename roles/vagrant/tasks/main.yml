@@ -6,9 +6,11 @@
   register: vagrant_installed
   changed_when: False
 
+- debug: msg="ensuring vagrant {{ vagrant_version }} is installed"
+
 - name: download vagrant
   get_url: >
-    url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb
+    url=https://dl.bintray.com/mitchellh/vagrant/vagrant_{{ vagrant_version }}_x86_64.deb
     dest=/var/tmp/vagrant.deb
   when: vagrant_installed.rc != 0
 

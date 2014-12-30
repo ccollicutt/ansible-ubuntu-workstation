@@ -8,8 +8,12 @@
 
 - name: download the atom deb file
   get_url: >
-    url=https://github.com/atom/atom/releases/download/v0.142.0/atom-amd64.deb
+    url=https://github.com/atom/atom/releases/download/v0.165.0/atom-amd64.deb
     dest=/var/tmp/atom.deb
+  when: atom_installed.rc != 0
+
+- name: install atom
+  command: dpkg -i /var/tmp/atom.deb
   when: atom_installed.rc != 0
 
 # FIXME: Not sure if this is a good way to cleanup

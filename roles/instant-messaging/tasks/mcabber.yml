@@ -7,11 +7,12 @@
 
 - name: ensure ~/.mcabber/logs exists
   file: >
-    path=/home/{{ ansible_env.SUDO_USER }}/.mcabber
+    path=/home/{{ ansible_env.SUDO_USER }}/.mcabber/logs
     owner={{ ansible_env.SUDO_USER }}
     group={{ ansible_env.SUDO_USER }}
     state=directory
     recurse=yes
+    mode=0700
 
 - name: install mcabber configuration file
   template: >

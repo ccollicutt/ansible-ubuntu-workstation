@@ -2,3 +2,5 @@
 
 mcabber_user: CHANGEME
 mcabber_password: CHANGEME
+
+vagrant_version: 1.7.1

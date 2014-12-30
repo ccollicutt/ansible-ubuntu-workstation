@@ -1,0 +1,36 @@
+---
+
+- name: see if spideroak deb file is already installed
+  command: dpkg -l spideroak
+  register: spideroak_installed
+  ignore_errors: True
+  changed_when: False
+
+- name: ensure required spideroak libraries are installed
+  apt: >
+    name=libc6
+    state=present
+
+- name: download the spider deb file
+  get_url: >
+    url=https://spideroak.com/getbuild?platform=ubuntu&arch=x86_64
+    dest=/var/tmp/spideroak.deb
+  when: spideroak_installed.rc != 0
+
+- name: install spideroak
+  command: dpkg -i /var/tmp/spideroak.deb
+  when: spideroak_installed.rc != 0
+
+# FIXME: Not sure if this is a good way to cleanup
+- name: ensure /var/tmp/spideroak.deb does not exist
+  file: >
+    path=/var/tmp/spideroak.deb
+    state=absent
+
+- name: ensure a passwords directory exists to sync
+  file: >
+    path=/home/{{ ansible_env.SUDO_USER }}/passwords
+    state=directory
+    owner={{ ansible_env.SUDO_USER }}
+    group={{ ansible_env.SUDO_USER }}
+    mode=0750
